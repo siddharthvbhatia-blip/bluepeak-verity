@@ -1,0 +1,24 @@
+/* BluePeak Verity — native select dropdown contrast fix (Windows Chrome/Edge) */
+.pilot-form select {
+  color: #f4f8fc !important;
+  background-color: #0d2238 !important;
+  -webkit-text-fill-color: #f4f8fc !important;
+  color-scheme: dark;
+}
+
+.pilot-form select option {
+  color: #f4f8fc !important;
+  background-color: #0d2238 !important;
+  -webkit-text-fill-color: #f4f8fc !important;
+}
+
+.pilot-form select option:checked {
+  color: #ffffff !important;
+  background-color: #2b557b !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.pilot-form select option[disabled] {
+  color: #9fb3c5 !important;
+  -webkit-text-fill-color: #9fb3c5 !important;
+}

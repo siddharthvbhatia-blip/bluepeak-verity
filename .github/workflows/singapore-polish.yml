@@ -1,0 +1,54 @@
+name: Polish Singapore market integration
+
+on:
+  push:
+    paths:
+      - '.github/workflows/singapore-polish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Refine GST and enquiry layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          old='Final fees depend on volume, entities, backlog, currencies, payroll, sales tax or VAT, source quality, turnaround and reviewer requirements.'
+          new='Final fees depend on volume, entities, backlog, currencies, payroll, sales tax, VAT or GST, source quality, turnaround and reviewer requirements.'
+          if s.count(old)!=1: raise SystemExit('pricing tax wording not found exactly once')
+          p.write_text(s.replace(old,new),encoding='utf-8')
+
+          p=Path('assets/styles.css')
+          s=p.read_text(encoding='utf-8')
+          anchor='.choice-grid.compact{grid-template-columns:repeat(3,1fr)}'
+          repl='.choice-grid.compact{grid-template-columns:repeat(3,1fr)}.form-step[data-form-step="1"] .choice-grid{grid-template-columns:repeat(2,1fr)}'
+          if s.count(anchor)!=1: raise SystemExit('choice-grid anchor not found exactly once')
+          p.write_text(s.replace(anchor,repl),encoding='utf-8')
+          PY
+      - name: Validate refinements
+        run: |
+          set -euo pipefail
+          grep -q 'sales tax, VAT or GST' index.html
+          grep -q 'data-form-step="1".*choice-grid{grid-template-columns:repeat(2,1fr)}' assets/styles.css
+          node --check assets/script.js
+          node --check assets/graphics-upgrade.js
+      - name: Commit refinements
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html assets/styles.css
+          git commit -m 'Polish Singapore GST and enquiry presentation'
+          git push origin main

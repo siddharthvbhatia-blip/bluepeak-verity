@@ -12,7 +12,7 @@
   const loadTeamUpgrade = () => {
     if (document.querySelector('script[data-bp-team-upgrade]')) return;
     const teamScript = document.createElement('script');
-    teamScript.src = 'assets/team-upgrade.js?v=20260910-r3';
+    teamScript.src = 'assets/team-upgrade.js?v=20260910-r4';
     teamScript.async = false;
     teamScript.dataset.bpTeamUpgrade = 'true';
     document.head.appendChild(teamScript);

@@ -36,27 +36,43 @@
     section.insertBefore(intro, beforeNode);
   };
 
+  const cleanFounderFrame = photoShell => {
+    const frame = q('.founder-photo-frame', photoShell);
+    if (!frame) return null;
+    frame.classList.add('professional-photo', 'founder-professional-photo');
+    q('.founder-orbit', photoShell)?.remove();
+    photoShell.querySelectorAll('.founder-label').forEach(node => node.remove());
+    return frame;
+  };
+
   const upgradeStandardLeadership = section => {
     const layout = q('.founder-layout', section);
     if (!layout) return false;
 
-    const founderPhoto = q('.founder-photo-shell', layout);
+    const founderPhotoShell = q('.founder-photo-shell', layout);
     const founderCopy = q('.founder-copy', layout);
-    if (!founderPhoto || !founderCopy) return false;
+    if (!founderPhotoShell || !founderCopy) return false;
+
+    const founderFrame = cleanFounderFrame(founderPhotoShell);
+    if (!founderFrame) return false;
 
     section.classList.add('leadership-section');
     addSectionIntro(section, layout);
 
+    founderCopy.classList.add('leader-copy');
     q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('Founder | Chartered Accountant'));
 
     const founderCard = document.createElement('article');
     founderCard.className = 'leader-card leader-card-founder';
+
     const founderMedia = document.createElement('div');
     founderMedia.className = 'leader-media';
-    founderMedia.appendChild(founderPhoto);
+    founderMedia.appendChild(founderFrame);
     founderMedia.insertAdjacentHTML('beforeend', '<span class="leader-role-badge">Founder</span>');
+
     founderCard.append(founderMedia, founderCopy);
 
+    founderPhotoShell.remove();
     layout.className = 'container leadership-grid';
     layout.replaceChildren(founderCard, createPoojaCard());
     return true;
@@ -73,6 +89,9 @@
     section.classList.add('leadership-section', 'sg-leadership-section');
     addSectionIntro(section, layout);
 
+    founderPhoto.classList.add('professional-photo', 'founder-professional-photo');
+    founderCopy.classList.add('leader-copy');
+
     const founderCard = document.createElement('article');
     founderCard.className = 'sg-leader-card';
     const founderMedia = document.createElement('div');
@@ -87,7 +106,7 @@
       <div class="sg-leader-photo professional-photo">
         <img src="assets/pooja-manawat.jpg" alt="CA Pooja Manawat, Senior Chartered Accountant at BluePeak Verity" width="560" height="700" loading="lazy" decoding="async">
       </div>
-      <div>
+      <div class="leader-copy">
         <p class="eyebrow">Senior Chartered Accountant</p>
         <h2>CA. Pooja Manawat</h2>
         <p><strong>Chartered Accountant, India · Qualified 2017</strong></p>

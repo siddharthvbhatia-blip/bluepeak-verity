@@ -61,6 +61,8 @@
 
     founderCopy.classList.add('leader-copy');
     q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('Founder | Chartered Accountant'));
+    const founderName = q('h2', founderCopy);
+    if (founderName) founderName.textContent = 'CA. Siddharth Bhatia';
 
     const founderCard = document.createElement('article');
     founderCard.className = 'leader-card leader-card-founder';
@@ -99,6 +101,8 @@
     founderMedia.appendChild(founderPhoto);
     founderCard.append(founderMedia, founderCopy);
     q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('Founder | Chartered Accountant'));
+    const founderName = q('h2', founderCopy);
+    if (founderName) founderName.textContent = 'CA. Siddharth Bhatia';
 
     const poojaCard = document.createElement('article');
     poojaCard.className = 'sg-leader-card';
@@ -119,10 +123,38 @@
     return true;
   };
 
+  const normalizeFounderName = () => {
+    if (document.body) {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.nodeValue && node.nodeValue.includes('CA Siddharth Bhatia')) {
+          node.nodeValue = node.nodeValue.replaceAll('CA Siddharth Bhatia', 'CA. Siddharth Bhatia');
+        }
+      }
+    }
+
+    document.querySelectorAll('[alt],[aria-label],[title]').forEach(element => {
+      ['alt', 'aria-label', 'title'].forEach(attribute => {
+        const value = element.getAttribute(attribute);
+        if (value && value.includes('CA Siddharth Bhatia')) {
+          element.setAttribute(attribute, value.replaceAll('CA Siddharth Bhatia', 'CA. Siddharth Bhatia'));
+        }
+      });
+    });
+
+    document.querySelectorAll('meta[content]').forEach(meta => {
+      const value = meta.getAttribute('content');
+      if (value && value.includes('CA Siddharth Bhatia')) {
+        meta.setAttribute('content', value.replaceAll('CA Siddharth Bhatia', 'CA. Siddharth Bhatia'));
+      }
+    });
+  };
+
   const updateAboutMetadata = () => {
     if (!/about\.html$/i.test(location.pathname)) return;
     const description = q('meta[name="description"]');
-    if (description) description.content = 'Meet CA Siddharth Bhatia and CA Pooja Manawat and learn how BluePeak Verity delivers Chartered Accountant-led accounting support for US, UK and Singapore firms from India.';
+    if (description) description.content = 'Meet CA. Siddharth Bhatia and CA. Pooja Manawat and learn how BluePeak Verity delivers Chartered Accountant-led accounting support for US, UK and Singapore firms from India.';
   };
 
   const run = () => {
@@ -133,6 +165,7 @@
       if (upgraded) section.dataset.bpLeadershipUpgraded = 'true';
     });
     updateAboutMetadata();
+    normalizeFounderName();
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true });

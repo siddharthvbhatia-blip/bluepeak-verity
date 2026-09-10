@@ -2,6 +2,7 @@
   'use strict';
 
   const q = (selector, context = document) => context.querySelector(selector);
+  const poojaLinkedIn = 'https://www.linkedin.com/in/ca-pooja-manavat-526170137/';
 
   const createPoojaCard = () => {
     const article = document.createElement('article');
@@ -20,6 +21,9 @@
         <p>A Chartered Accountant qualified in 2017 with professional experience across accounting, taxation, audit-related assignments and finance. She contributes senior-level accounting execution, financial review and compliance-oriented experience to BluePeak Verity's client delivery.</p>
         <div class="leader-expertise" aria-label="Areas of expertise">
           <span>Accounting</span><span>Taxation</span><span>Audit Support</span><span>Financial Reporting</span><span>Finance</span><span>Review</span>
+        </div>
+        <div class="hero-actions leader-actions">
+          <a class="btn btn-ghost dark" href="${poojaLinkedIn}" target="_blank" rel="noopener noreferrer" aria-label="View CA. Pooja Manavat on LinkedIn">LinkedIn ↗</a>
         </div>
       </div>`;
     return article;
@@ -116,6 +120,9 @@
         <p><strong>Chartered Accountant, India · Qualified 2017 · ICAI Membership 434849</strong></p>
         <p>Senior delivery experience across accounting, taxation, audit-related assignments, financial reporting and finance.</p>
         <div class="leader-expertise"><span>Accounting</span><span>Taxation</span><span>Audit Support</span><span>Finance</span></div>
+        <div class="hero-actions leader-actions">
+          <a class="btn btn-ghost dark" href="${poojaLinkedIn}" target="_blank" rel="noopener noreferrer" aria-label="View CA. Pooja Manavat on LinkedIn">LinkedIn ↗</a>
+        </div>
       </div>`;
 
     layout.className = 'container sg-leadership-grid';

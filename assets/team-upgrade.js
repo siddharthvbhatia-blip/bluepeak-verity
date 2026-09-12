@@ -35,8 +35,8 @@
     intro.className = 'container section-intro leadership-intro';
     intro.innerHTML = `
       <p class="eyebrow">Leadership &amp; Senior Professionals</p>
-      <h2>Founder-led accountability. Senior Chartered Accountant delivery capacity.</h2>
-      <p>BluePeak Verity combines founder oversight with senior Chartered Accountant experience across accounting, taxation, finance and defined audit-support work.</p>`;
+      <h2>CEO-led accountability. Senior Chartered Accountant delivery capacity.</h2>
+      <p>BluePeak Verity combines CEO oversight with senior Chartered Accountant experience across accounting, taxation, finance and defined audit-support work.</p>`;
     section.insertBefore(intro, beforeNode);
   };
 
@@ -64,7 +64,7 @@
     addSectionIntro(section, layout);
 
     founderCopy.classList.add('leader-copy');
-    q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('Founder | Chartered Accountant'));
+    q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('CEO | Chartered Accountant'));
     const founderName = q('h2', founderCopy);
     if (founderName) founderName.textContent = 'CA. Siddharth Bhatia';
 
@@ -74,7 +74,7 @@
     const founderMedia = document.createElement('div');
     founderMedia.className = 'leader-media';
     founderMedia.appendChild(founderFrame);
-    founderMedia.insertAdjacentHTML('beforeend', '<span class="leader-role-badge">Founder</span>');
+    founderMedia.insertAdjacentHTML('beforeend', '<span class="leader-role-badge">CEO</span>');
 
     founderCard.append(founderMedia, founderCopy);
 
@@ -104,7 +104,7 @@
     founderMedia.className = 'sg-leader-photo';
     founderMedia.appendChild(founderPhoto);
     founderCard.append(founderMedia, founderCopy);
-    q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('Founder | Chartered Accountant'));
+    q('.eyebrow', founderCopy)?.replaceChildren(document.createTextNode('CEO | Chartered Accountant'));
     const founderName = q('h2', founderCopy);
     if (founderName) founderName.textContent = 'CA. Siddharth Bhatia';
 
@@ -165,7 +165,7 @@
   const updateAboutMetadata = () => {
     if (!/about\.html$/i.test(location.pathname)) return;
     const description = q('meta[name="description"]');
-    if (description) description.content = 'Meet CA. Siddharth Bhatia and CA. Pooja Manavat and learn how BluePeak Verity delivers Chartered Accountant-led accounting support for US, UK and Singapore firms from India.';
+    if (description) description.content = 'Meet CA. Siddharth Bhatia, CEO, and CA. Pooja Manavat and learn how BluePeak Verity delivers Chartered Accountant-led accounting support for US, UK and Singapore firms from India.';
   };
 
   const run = () => {

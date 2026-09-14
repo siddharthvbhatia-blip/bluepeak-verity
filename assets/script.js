@@ -9,12 +9,26 @@
     document.head.appendChild(teamStyle);
   }
 
+  const loadEliteV3 = () => {
+    if (document.querySelector('script[data-bp-elite-v3]')) return;
+    const eliteV3 = document.createElement('script');
+    eliteV3.src = 'assets/elite-polish-v3.js?v=20260914-r1';
+    eliteV3.async = false;
+    eliteV3.dataset.bpEliteV3 = 'true';
+    document.head.appendChild(eliteV3);
+  };
+
   const loadElitePolish = () => {
-    if (document.querySelector('script[data-bp-elite-polish]')) return;
+    if (document.querySelector('script[data-bp-elite-polish]')) {
+      loadEliteV3();
+      return;
+    }
     const eliteScript = document.createElement('script');
     eliteScript.src = 'assets/elite-polish-v2.js?v=20260914-r1';
     eliteScript.async = false;
     eliteScript.dataset.bpElitePolish = 'true';
+    eliteScript.addEventListener('load', loadEliteV3, { once: true });
+    eliteScript.addEventListener('error', loadEliteV3, { once: true });
     document.head.appendChild(eliteScript);
   };
 

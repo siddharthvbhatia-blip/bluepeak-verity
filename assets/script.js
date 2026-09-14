@@ -9,12 +9,34 @@
     document.head.appendChild(teamStyle);
   }
 
+  if (!document.querySelector('link[data-bp-platform-branding]')) {
+    const platformStyle = document.createElement('link');
+    platformStyle.rel = 'stylesheet';
+    platformStyle.href = 'assets/platform-branding.css?v=20260914-r1';
+    platformStyle.dataset.bpPlatformBranding = 'true';
+    document.head.appendChild(platformStyle);
+  }
+
+  const loadPlatformBranding = () => {
+    if (document.querySelector('script[data-bp-platform-branding]')) return;
+    const platformScript = document.createElement('script');
+    platformScript.src = 'assets/platform-branding.js?v=20260914-r1';
+    platformScript.async = false;
+    platformScript.dataset.bpPlatformBranding = 'true';
+    document.head.appendChild(platformScript);
+  };
+
   const loadEliteV3 = () => {
-    if (document.querySelector('script[data-bp-elite-v3]')) return;
+    if (document.querySelector('script[data-bp-elite-v3]')) {
+      loadPlatformBranding();
+      return;
+    }
     const eliteV3 = document.createElement('script');
     eliteV3.src = 'assets/elite-polish-v3.js?v=20260914-r1';
     eliteV3.async = false;
     eliteV3.dataset.bpEliteV3 = 'true';
+    eliteV3.addEventListener('load', loadPlatformBranding, { once: true });
+    eliteV3.addEventListener('error', loadPlatformBranding, { once: true });
     document.head.appendChild(eliteV3);
   };
 

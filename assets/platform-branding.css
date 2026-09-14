@@ -1,0 +1,200 @@
+/* BluePeak Verity — platform branding layer
+   Brand marks are used selectively. Microsoft product icons are intentionally
+   not reproduced because Microsoft requires express permission for logo/icon use. */
+
+.platform-stack-section {
+  position: relative;
+  padding: 52px 0 58px;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(45, 203, 255, .10), transparent 34%),
+    linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
+  border-top: 1px solid rgba(8, 39, 63, .08);
+  border-bottom: 1px solid rgba(8, 39, 63, .08);
+  overflow: hidden;
+}
+.platform-stack-section::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -90px auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 129, 168, .10);
+  box-shadow: 0 0 0 34px rgba(17,129,168,.025), 0 0 0 68px rgba(17,129,168,.018);
+  pointer-events: none;
+}
+.platform-stack-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 26px;
+}
+.platform-stack-head h2 {
+  margin: 7px 0 0;
+  max-width: 760px;
+  color: #071827;
+  font-size: clamp(1.75rem, 3vw, 2.55rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+.platform-stack-head > p {
+  margin: 0;
+  color: #506474;
+  font-size: .98rem;
+  line-height: 1.7;
+}
+.platform-stack-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.platform-card {
+  min-height: 154px;
+  padding: 21px 20px 18px;
+  border: 1px solid rgba(8, 39, 63, .10);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 10px 30px rgba(7, 31, 49, .055);
+  backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.platform-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(27, 143, 182, .25);
+  box-shadow: 0 16px 36px rgba(7, 31, 49, .085);
+}
+.platform-card-mark {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.platform-card-mark img {
+  display: block;
+  max-width: 108px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.platform-neutral-glyph {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  border: 1px solid rgba(10, 53, 78, .13);
+  background: #f3f8fa;
+  color: #0b415f;
+  display: grid;
+  place-items: center;
+}
+.platform-neutral-glyph svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.platform-card h3 {
+  margin: 0;
+  color: #0a2030;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+.platform-card p {
+  margin: 6px 0 0;
+  color: #667985;
+  font-size: .79rem;
+  line-height: 1.5;
+}
+.platform-card.xero-card {
+  border-color: rgba(19, 181, 234, .24);
+}
+.platform-stack-note {
+  position: relative;
+  z-index: 1;
+  margin: 17px 0 0;
+  color: #788892;
+  font-size: .72rem;
+  line-height: 1.55;
+}
+
+/* Replace the prior illustrative Xero lettering with the official Xero asset. */
+.xero-mark.bp-official-xero,
+.credential-badge-large.bp-official-xero {
+  background: #fff !important;
+  border: 1px solid rgba(8, 39, 63, .10) !important;
+  box-shadow: 0 18px 38px rgba(7, 31, 49, .09) !important;
+  overflow: hidden;
+  display: grid !important;
+  place-items: center;
+}
+.xero-mark.bp-official-xero img,
+.credential-badge-large.bp-official-xero img {
+  display: block;
+  width: min(72%, 160px);
+  height: auto;
+  object-fit: contain;
+}
+.credential-badge-large.bp-official-xero {
+  gap: 12px;
+  padding: 28px;
+  text-align: center;
+}
+.credential-badge-large.bp-official-xero img {
+  width: min(76%, 178px);
+}
+.credential-badge-large.bp-official-xero .bp-xero-level {
+  display: block;
+  color: #073450;
+  font-weight: 800;
+  font-size: .82rem;
+  line-height: 1.35;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.bp-tools-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 5px;
+}
+.bp-tools-inline span {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(8, 39, 63, .10);
+  background: rgba(255,255,255,.72);
+  color: inherit;
+  font-size: .75rem;
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.bp-brand-legal {
+  margin: 18px 0 0;
+  color: rgba(255,255,255,.52);
+  font-size: .68rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .platform-stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .platform-stack-head { grid-template-columns: 1fr; gap: 14px; }
+}
+@media (max-width: 620px) {
+  .platform-stack-section { padding: 42px 0 46px; }
+  .platform-stack-grid { grid-template-columns: 1fr; }
+  .platform-card { min-height: 132px; }
+  .platform-stack-head h2 { font-size: clamp(1.7rem, 8vw, 2.1rem); }
+}

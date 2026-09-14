@@ -1,106 +1,100 @@
 /* BluePeak Verity — platform branding layer
-   Brand marks are used selectively. Microsoft product icons are intentionally
-   not reproduced because Microsoft requires express permission for logo/icon use. */
+   Genuine vendor artwork is used for QuickBooks and Xero. Other software is
+   presented typographically rather than with imitation product icons. */
 
 .platform-stack-section {
   position: relative;
-  padding: 52px 0 58px;
-  background:
-    radial-gradient(circle at 14% 8%, rgba(45, 203, 255, .10), transparent 34%),
-    linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
-  border-top: 1px solid rgba(8, 39, 63, .08);
-  border-bottom: 1px solid rgba(8, 39, 63, .08);
+  padding: 58px 0 64px;
+  background: #f5f8fa;
+  border-top: 1px solid rgba(8, 39, 63, .07);
+  border-bottom: 1px solid rgba(8, 39, 63, .07);
   overflow: hidden;
 }
-.platform-stack-section::after {
+.platform-stack-section::before {
   content: "";
   position: absolute;
-  inset: auto -8% -90px auto;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  border: 1px solid rgba(17, 129, 168, .10);
-  box-shadow: 0 0 0 34px rgba(17,129,168,.025), 0 0 0 68px rgba(17,129,168,.018);
+  inset: 0;
   pointer-events: none;
+  background: linear-gradient(110deg, rgba(255,255,255,.78), rgba(255,255,255,0) 42%);
+}
+.platform-stack-head,
+.platform-stack-grid,
+.platform-stack-note {
+  position: relative;
+  z-index: 1;
 }
 .platform-stack-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-  gap: 36px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
+  gap: 42px;
   align-items: end;
-  margin-bottom: 26px;
+  margin-bottom: 30px;
 }
 .platform-stack-head h2 {
   margin: 7px 0 0;
-  max-width: 760px;
+  max-width: 780px;
   color: #071827;
-  font-size: clamp(1.75rem, 3vw, 2.55rem);
-  line-height: 1.08;
-  letter-spacing: -.035em;
+  font-size: clamp(1.82rem, 3vw, 2.62rem);
+  line-height: 1.06;
+  letter-spacing: -.038em;
 }
 .platform-stack-head > p {
   margin: 0;
-  color: #506474;
+  color: #536674;
   font-size: .98rem;
-  line-height: 1.7;
+  line-height: 1.72;
 }
 .platform-stack-grid {
-  position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 .platform-card {
-  min-height: 154px;
-  padding: 21px 20px 18px;
-  border: 1px solid rgba(8, 39, 63, .10);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, .88);
-  box-shadow: 0 10px 30px rgba(7, 31, 49, .055);
-  backdrop-filter: blur(7px);
+  min-height: 178px;
+  padding: 22px 22px 19px;
+  border: 1px solid rgba(8, 39, 63, .09);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(7, 31, 49, .045);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 .platform-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(27, 143, 182, .25);
-  box-shadow: 0 16px 36px rgba(7, 31, 49, .085);
+  transform: translateY(-2px);
+  border-color: rgba(20, 91, 126, .19);
+  box-shadow: 0 15px 36px rgba(7, 31, 49, .07);
+}
+.platform-card.brand-card {
+  padding-top: 20px;
 }
 .platform-card-mark {
-  height: 45px;
+  height: 66px;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .platform-card-mark img {
   display: block;
-  max-width: 108px;
-  max-height: 40px;
   width: auto;
   height: auto;
   object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
 }
-.platform-neutral-glyph {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  border: 1px solid rgba(10, 53, 78, .13);
-  background: #f3f8fa;
-  color: #0b415f;
-  display: grid;
-  place-items: center;
+.platform-card-mark-qbo {
+  margin-left: -4px;
 }
-.platform-neutral-glyph svg {
-  width: 22px;
-  height: 22px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.platform-card-mark-qbo img {
+  width: 168px;
+  max-width: 100%;
+  max-height: 74px;
+}
+.platform-card-mark-xero img {
+  width: 122px;
+  max-width: 80%;
+  max-height: 52px;
 }
 .platform-card h3 {
   margin: 0;
@@ -110,29 +104,53 @@
   letter-spacing: -.01em;
 }
 .platform-card p {
-  margin: 6px 0 0;
+  margin: 7px 0 0;
   color: #667985;
-  font-size: .79rem;
-  line-height: 1.5;
+  font-size: .8rem;
+  line-height: 1.52;
 }
-.platform-card.xero-card {
-  border-color: rgba(19, 181, 234, .24);
+.quickbooks-card {
+  border-top: 3px solid #2ca01c;
+}
+.xero-card {
+  border-top: 3px solid #13b5ea;
+}
+.platform-text-mark {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.platform-text-mark small {
+  display: block;
+  margin-bottom: 4px;
+  color: #71808b;
+  font-size: .63rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+.platform-text-mark strong {
+  display: block;
+  color: #142938;
+  font-size: 1.45rem;
+  line-height: 1;
+  letter-spacing: -.035em;
 }
 .platform-stack-note {
-  position: relative;
-  z-index: 1;
   margin: 17px 0 0;
-  color: #788892;
-  font-size: .72rem;
+  color: #7b8a93;
+  font-size: .7rem;
   line-height: 1.55;
 }
 
-/* Replace the prior illustrative Xero lettering with the official Xero asset. */
+/* Genuine Xero logo presentation: no recreated credential badge. */
 .xero-mark.bp-official-xero,
 .credential-badge-large.bp-official-xero {
   background: #fff !important;
-  border: 1px solid rgba(8, 39, 63, .10) !important;
-  box-shadow: 0 18px 38px rgba(7, 31, 49, .09) !important;
+  border: 1px solid rgba(8, 39, 63, .09) !important;
+  box-shadow: 0 16px 34px rgba(7, 31, 49, .075) !important;
   overflow: hidden;
   display: grid !important;
   place-items: center;
@@ -140,51 +158,43 @@
 .xero-mark.bp-official-xero img,
 .credential-badge-large.bp-official-xero img {
   display: block;
-  width: min(72%, 160px);
+  width: min(72%, 164px);
   height: auto;
   object-fit: contain;
+  filter: none !important;
 }
-.credential-badge-large.bp-official-xero {
-  gap: 12px;
-  padding: 28px;
-  text-align: center;
+.credential-badge-large.bp-official-xero.bp-xero-logo-only {
+  padding: 34px;
+  min-height: 210px;
 }
-.credential-badge-large.bp-official-xero img {
-  width: min(76%, 178px);
-}
-.credential-badge-large.bp-official-xero .bp-xero-level {
-  display: block;
-  color: #073450;
-  font-weight: 800;
-  font-size: .82rem;
-  line-height: 1.35;
-  letter-spacing: .07em;
-  text-transform: uppercase;
+.credential-badge-large.bp-official-xero.bp-xero-logo-only img {
+  width: min(76%, 190px);
 }
 
 .bp-tools-inline {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 5px;
+  gap: 0;
+  margin-top: 4px;
 }
 .bp-tools-inline span {
   display: inline-flex;
   align-items: center;
-  padding: 5px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(8, 39, 63, .10);
-  background: rgba(255,255,255,.72);
   color: inherit;
-  font-size: .75rem;
-  font-weight: 650;
-  line-height: 1.15;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
-
+.bp-tools-inline span:not(:last-child)::after {
+  content: "·";
+  margin: 0 7px;
+  color: #8a99a3;
+  font-weight: 500;
+}
 .bp-brand-legal {
   margin: 18px 0 0;
-  color: rgba(255,255,255,.52);
-  font-size: .68rem;
+  color: rgba(255,255,255,.5);
+  font-size: .67rem;
   line-height: 1.55;
 }
 
@@ -193,8 +203,10 @@
   .platform-stack-head { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 620px) {
-  .platform-stack-section { padding: 42px 0 46px; }
+  .platform-stack-section { padding: 44px 0 50px; }
   .platform-stack-grid { grid-template-columns: 1fr; }
-  .platform-card { min-height: 132px; }
-  .platform-stack-head h2 { font-size: clamp(1.7rem, 8vw, 2.1rem); }
+  .platform-card { min-height: 150px; }
+  .platform-stack-head h2 { font-size: clamp(1.72rem, 8vw, 2.1rem); }
+  .platform-card-mark-qbo img { width: 156px; }
+  .platform-card-mark-xero img { width: 112px; }
 }

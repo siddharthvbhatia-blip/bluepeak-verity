@@ -1,0 +1,68 @@
+name: Sync elite v3 asset versions
+
+on:
+  push:
+    paths:
+      - '.github/workflows/elite-v3-cache-sync.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate enhanced JavaScript
+        run: |
+          node --check assets/script.js
+          node --check assets/client-experience-upgrade.js
+          node --check assets/benchmark-polish.js
+          node --check assets/elite-polish-v2.js
+          node --check assets/elite-polish-v3.js
+          node --check assets/team-upgrade.js
+
+      - name: Cache-bust BluePeak pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = [
+              Path('index.html'),
+              Path('about.html'),
+              Path('xero-certified.html'),
+              Path('singapore-accounting-firms.html'),
+          ]
+          target = 'assets/script.js?v=20260914-elite-v3-r1'
+          pattern = re.compile(r'assets/script\.js\?v=[^"\']+')
+          for path in pages:
+              text = path.read_text(encoding='utf-8')
+              if 'assets/script.js?v=' not in text:
+                  raise SystemExit(f'Expected script loader not found in {path}')
+              text = pattern.sub(target, text)
+              path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Verify cache version and new assets
+        run: |
+          grep -q 'assets/script.js?v=20260914-elite-v3-r1' index.html
+          grep -q 'assets/script.js?v=20260914-elite-v3-r1' about.html
+          grep -q 'assets/script.js?v=20260914-elite-v3-r1' xero-certified.html
+          grep -q 'assets/script.js?v=20260914-elite-v3-r1' singapore-accounting-firms.html
+          test -s assets/elite-polish-v3.js
+          test -s assets/elite-polish-v3.css
+
+      - name: Commit cache sync
+        run: |
+          if git diff --quiet; then
+            echo 'No changes required'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html xero-certified.html singapore-accounting-firms.html
+          git commit -m 'Activate elite v3 platform and insight polish'
+          git push

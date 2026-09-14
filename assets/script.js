@@ -9,6 +9,22 @@
     document.head.appendChild(teamStyle);
   }
 
+  if (!document.querySelector('link[data-bp-platform-branding]')) {
+    const platformStyle = document.createElement('link');
+    platformStyle.rel = 'stylesheet';
+    platformStyle.href = 'assets/platform-branding.css?v=20260914-r1';
+    platformStyle.dataset.bpPlatformBranding = 'true';
+    document.head.appendChild(platformStyle);
+  }
+
+  if (!document.querySelector('script[data-bp-platform-branding]')) {
+    const platformScript = document.createElement('script');
+    platformScript.src = 'assets/platform-branding.js?v=20260914-r1';
+    platformScript.async = false;
+    platformScript.dataset.bpPlatformBranding = 'true';
+    document.head.appendChild(platformScript);
+  }
+
   const loadEliteV3 = () => {
     if (document.querySelector('script[data-bp-elite-v3]')) return;
     const eliteV3 = document.createElement('script');

@@ -94,7 +94,7 @@
     footerBrand.appendChild(note);
   };
 
-  addPlatformSection();
+  // The site already has a dedicated software-stack section. Do not inject a second one.
   replaceXeroCredentialArtwork();
   normalizePlatformNaming();
   addFooterBrandNote();

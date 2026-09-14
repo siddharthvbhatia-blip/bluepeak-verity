@@ -17,12 +17,26 @@
     document.head.appendChild(platformStyle);
   }
 
+  const loadBrandCorrection = () => {
+    if (document.querySelector('script[data-bpv-brand-correction]')) return;
+    const correction = document.createElement('script');
+    correction.src = 'assets/brand-correction.js?v=20260915-r1';
+    correction.async = false;
+    correction.dataset.bpvBrandCorrection = 'true';
+    document.head.appendChild(correction);
+  };
+
   const loadPlatformBranding = () => {
-    if (document.querySelector('script[data-bp-platform-branding]')) return;
+    if (document.querySelector('script[data-bp-platform-branding]')) {
+      loadBrandCorrection();
+      return;
+    }
     const platformScript = document.createElement('script');
-    platformScript.src = 'assets/platform-branding.js?v=20260914-r3';
+    platformScript.src = 'assets/platform-branding.js?v=20260915-r4';
     platformScript.async = false;
     platformScript.dataset.bpPlatformBranding = 'true';
+    platformScript.addEventListener('load', loadBrandCorrection, { once: true });
+    platformScript.addEventListener('error', loadBrandCorrection, { once: true });
     document.head.appendChild(platformScript);
   };
 

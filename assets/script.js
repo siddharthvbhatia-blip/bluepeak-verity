@@ -9,13 +9,27 @@
     document.head.appendChild(teamStyle);
   }
 
+  const loadClientExperience = () => {
+    if (document.querySelector('script[data-bp-client-experience]')) return;
+    const clientScript = document.createElement('script');
+    clientScript.src = 'assets/client-experience-upgrade.js?v=20260914-r1';
+    clientScript.async = false;
+    clientScript.dataset.bpClientExperience = 'true';
+    document.head.appendChild(clientScript);
+  };
+
   const loadTeamUpgrade = () => {
-    if (document.querySelector('script[data-bp-team-upgrade]')) return;
-    const teamScript = document.createElement('script');
-    teamScript.src = 'assets/team-upgrade.js?v=20260912-ceo-r1';
-    teamScript.async = false;
-    teamScript.dataset.bpTeamUpgrade = 'true';
-    document.head.appendChild(teamScript);
+    if (!document.querySelector('script[data-bp-team-upgrade]')) {
+      const teamScript = document.createElement('script');
+      teamScript.src = 'assets/team-upgrade.js?v=20260912-ceo-r1';
+      teamScript.async = false;
+      teamScript.dataset.bpTeamUpgrade = 'true';
+      teamScript.addEventListener('load', loadClientExperience, { once: true });
+      teamScript.addEventListener('error', loadClientExperience, { once: true });
+      document.head.appendChild(teamScript);
+      return;
+    }
+    loadClientExperience();
   };
 
   const coreScript = document.createElement('script');

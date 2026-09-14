@@ -1,0 +1,108 @@
+/* BluePeak Verity — final vendor-logo correction layer.
+   Uses only the supplied QuickBooks artwork and supplied Xero brand-pack asset. */
+
+.bpv-official-software-logo,
+.bpv-official-compact-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.bpv-official-software-logo img,
+.bpv-official-compact-logo img {
+  display: block;
+  max-width: none;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* The user-supplied QuickBooks PNG is a 600x600 canvas with the genuine
+   horizontal mark centred inside it. A wide viewport reveals that mark without
+   altering, redrawing or recolouring the logo pixels. */
+.bpv-official-software-logo.bpv-qbo {
+  width: 112px;
+  height: 48px;
+  background: #fff;
+  border: 0;
+  border-radius: 8px;
+}
+.bpv-official-software-logo.bpv-qbo img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 112px;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+.bpv-official-software-logo.bpv-xero {
+  width: 82px;
+  height: 48px;
+  background: transparent;
+}
+.bpv-official-software-logo.bpv-xero img {
+  width: 82px;
+  height: auto;
+}
+
+/* Compact placements elsewhere on the site. */
+.bpv-official-compact-logo.bpv-qbo {
+  width: 78px;
+  height: 30px;
+  background: #fff;
+  border-radius: 6px;
+}
+.bpv-official-compact-logo.bpv-qbo img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 78px;
+  height: auto;
+  transform: translateY(-50%);
+}
+.bpv-official-compact-logo.bpv-xero {
+  width: 56px;
+  height: 30px;
+}
+.bpv-official-compact-logo.bpv-xero img {
+  width: 54px;
+  height: auto;
+}
+
+/* Give genuine wordmarks enough room instead of forcing them into faux app icons. */
+.bp-software-chip .bp2-tool-head,
+.bp-software-chip .bp-tool-top {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+.bp-software-chip.bpv-brand-corrected .bp2-tool-name > span {
+  display: none !important;
+}
+.bp-software-chip.bpv-brand-corrected .bpv-official-software-logo {
+  box-shadow: none !important;
+  transform: none !important;
+}
+.bp-software-chip.bpv-brand-corrected:hover .bpv-official-software-logo {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Keep compact official marks clean in dark controls and small cards. */
+.bp3-platform-picker .bpv-official-compact-logo,
+.bp3-founder-tool .bpv-official-compact-logo,
+.bp3-market-platform .bpv-official-compact-logo,
+.bp3-insight-meta .bpv-official-compact-logo {
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .bpv-official-software-logo.bpv-qbo,
+  .bpv-official-software-logo.bpv-qbo img { width: 104px; }
+  .bpv-official-software-logo.bpv-xero,
+  .bpv-official-software-logo.bpv-xero img { width: 76px; }
+}

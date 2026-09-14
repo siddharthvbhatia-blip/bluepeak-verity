@@ -1,13 +1,9 @@
 (() => {
   'use strict';
 
+  // Original vendor-hosted artwork from official brand/media libraries.
   const XERO_LOGO = 'https://www.xero.com/content/dam/xero/pilot-images/explainer/media-downloads/xero-logo-downloads.1762731076660.png';
-
-  const icons = {
-    ledger: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h14v15H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
-    sheet: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 9h16M9 4v16M14.5 9v11"/></svg>',
-    chart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="12" width="3" height="6" rx=".5"/><rect x="11" y="8" width="3" height="10" rx=".5"/><rect x="16" y="4" width="3" height="14" rx=".5"/></svg>'
-  };
+  const QUICKBOOKS_LOGO = 'https://www.intuit.com/oidam/intuit/ic/en_us/images/h-z/intuit-logos-quickbooks-color-376x250.jpg';
 
   const addPlatformSection = () => {
     const anchor = document.querySelector('.credibility-rail');
@@ -26,24 +22,28 @@
           <p>Platform familiarity matters because clean accounting delivery depends on correct system workflow, source traceability and a reviewer-friendly handoff—not merely data entry.</p>
         </div>
         <div class="platform-stack-grid">
-          <article class="platform-card" data-reveal>
-            <div class="platform-card-mark"><span class="platform-neutral-glyph">${icons.ledger}</span></div>
+          <article class="platform-card brand-card quickbooks-card" data-reveal>
+            <div class="platform-card-mark platform-card-mark-qbo">
+              <img src="${QUICKBOOKS_LOGO}" alt="Intuit QuickBooks" loading="lazy" decoding="async">
+            </div>
             <div><h3>QuickBooks Online</h3><p>Bookkeeping, invoicing, bank-feed and reconciliation workflows.</p></div>
           </article>
-          <article class="platform-card xero-card" data-reveal>
-            <div class="platform-card-mark"><img src="${XERO_LOGO}" alt="Xero" loading="lazy" decoding="async"></div>
+          <article class="platform-card brand-card xero-card" data-reveal>
+            <div class="platform-card-mark platform-card-mark-xero">
+              <img src="${XERO_LOGO}" alt="Xero" loading="lazy" decoding="async">
+            </div>
             <div><h3>Xero</h3><p>Certified familiarity with cloud bookkeeping and reconciliation workflows.</p></div>
           </article>
-          <article class="platform-card" data-reveal>
-            <div class="platform-card-mark"><span class="platform-neutral-glyph">${icons.sheet}</span></div>
+          <article class="platform-card text-platform-card" data-reveal>
+            <div class="platform-text-mark"><small>MICROSOFT</small><strong>Excel</strong></div>
             <div><h3>Microsoft Excel</h3><p>Schedules, reconciliations, workpapers and structured analysis.</p></div>
           </article>
-          <article class="platform-card" data-reveal>
-            <div class="platform-card-mark"><span class="platform-neutral-glyph">${icons.chart}</span></div>
+          <article class="platform-card text-platform-card" data-reveal>
+            <div class="platform-text-mark"><small>MICROSOFT</small><strong>Power BI</strong></div>
             <div><h3>Microsoft Power BI</h3><p>Management reporting and analytical support where the engagement requires it.</p></div>
           </article>
         </div>
-        <p class="platform-stack-note">Product names and permitted marks are used only to identify software relevant to client workflows. No software-vendor partnership, sponsorship or endorsement is implied.</p>
+        <p class="platform-stack-note">QuickBooks and Xero marks shown above are original vendor artwork from official brand/media sources. Product references identify workflow familiarity only; no vendor partnership, sponsorship or endorsement is implied.</p>
       </div>`;
 
     anchor.insertAdjacentElement('afterend', section);
@@ -57,10 +57,11 @@
       mark.innerHTML = `<img src="${XERO_LOGO}" alt="Xero" loading="lazy" decoding="async">`;
     });
 
+    // Keep the vendor mark completely unmodified. Credential wording remains in page copy/meta data.
     document.querySelectorAll('.credential-badge-large').forEach((badge) => {
-      badge.classList.add('bp-official-xero');
-      badge.setAttribute('aria-label', 'Xero L1 Certified Associate');
-      badge.innerHTML = `<img src="${XERO_LOGO}" alt="Xero" loading="eager" decoding="async"><span class="bp-xero-level">L1 Certified Associate</span>`;
+      badge.classList.add('bp-official-xero', 'bp-xero-logo-only');
+      badge.setAttribute('aria-label', 'Xero');
+      badge.innerHTML = `<img src="${XERO_LOGO}" alt="Xero" loading="eager" decoding="async">`;
     });
   };
 

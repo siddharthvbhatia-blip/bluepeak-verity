@@ -12,7 +12,7 @@
   if (!document.querySelector('link[data-bp-platform-branding]')) {
     const platformStyle = document.createElement('link');
     platformStyle.rel = 'stylesheet';
-    platformStyle.href = 'assets/platform-branding.css?v=20260914-r1';
+    platformStyle.href = 'assets/platform-branding.css?v=20260914-r2';
     platformStyle.dataset.bpPlatformBranding = 'true';
     document.head.appendChild(platformStyle);
   }
@@ -20,7 +20,7 @@
   const loadPlatformBranding = () => {
     if (document.querySelector('script[data-bp-platform-branding]')) return;
     const platformScript = document.createElement('script');
-    platformScript.src = 'assets/platform-branding.js?v=20260914-r1';
+    platformScript.src = 'assets/platform-branding.js?v=20260914-r2';
     platformScript.async = false;
     platformScript.dataset.bpPlatformBranding = 'true';
     document.head.appendChild(platformScript);

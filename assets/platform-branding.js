@@ -1,9 +1,9 @@
 (() => {
   'use strict';
 
-  // Original vendor-hosted artwork from official brand/media libraries.
-  const XERO_LOGO = 'https://www.xero.com/content/dam/xero/pilot-images/explainer/media-downloads/xero-logo-downloads.1762731076660.png';
-  const QUICKBOOKS_LOGO = 'https://www.intuit.com/oidam/intuit/ic/en_us/images/h-z/intuit-logos-quickbooks-color-376x250.jpg';
+  // Exact user-supplied brand assets stored locally in this repository.
+  const XERO_LOGO = 'assets/xero-wordmark-blue.svg';
+  const QUICKBOOKS_LOGO = 'assets/quickbooks-logo-attached.png';
 
   const addPlatformSection = () => {
     const anchor = document.querySelector('.credibility-rail');
@@ -43,7 +43,7 @@
             <div><h3>Microsoft Power BI</h3><p>Management reporting and analytical support where the engagement requires it.</p></div>
           </article>
         </div>
-        <p class="platform-stack-note">QuickBooks and Xero marks shown above are original vendor artwork from official brand/media sources. Product references identify workflow familiarity only; no vendor partnership, sponsorship or endorsement is implied.</p>
+        <p class="platform-stack-note">QuickBooks and Xero marks shown above use the exact brand assets supplied for this website. Product references identify workflow familiarity only; no vendor partnership, sponsorship or endorsement is implied.</p>
       </div>`;
 
     anchor.insertAdjacentElement('afterend', section);
@@ -57,7 +57,6 @@
       mark.innerHTML = `<img src="${XERO_LOGO}" alt="Xero" loading="lazy" decoding="async">`;
     });
 
-    // Keep the vendor mark completely unmodified. Credential wording remains in page copy/meta data.
     document.querySelectorAll('.credential-badge-large').forEach((badge) => {
       badge.classList.add('bp-official-xero', 'bp-xero-logo-only');
       badge.setAttribute('aria-label', 'Xero');

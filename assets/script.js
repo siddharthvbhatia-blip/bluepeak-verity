@@ -9,12 +9,26 @@
     document.head.appendChild(teamStyle);
   }
 
+  const loadBenchmarkPolish = () => {
+    if (document.querySelector('script[data-bp-benchmark-polish]')) return;
+    const benchmarkScript = document.createElement('script');
+    benchmarkScript.src = 'assets/benchmark-polish.js?v=20260914-r1';
+    benchmarkScript.async = false;
+    benchmarkScript.dataset.bpBenchmarkPolish = 'true';
+    document.head.appendChild(benchmarkScript);
+  };
+
   const loadClientExperience = () => {
-    if (document.querySelector('script[data-bp-client-experience]')) return;
+    if (document.querySelector('script[data-bp-client-experience]')) {
+      loadBenchmarkPolish();
+      return;
+    }
     const clientScript = document.createElement('script');
     clientScript.src = 'assets/client-experience-upgrade.js?v=20260914-r1';
     clientScript.async = false;
     clientScript.dataset.bpClientExperience = 'true';
+    clientScript.addEventListener('load', loadBenchmarkPolish, { once: true });
+    clientScript.addEventListener('error', loadBenchmarkPolish, { once: true });
     document.head.appendChild(clientScript);
   };
 

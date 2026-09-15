@@ -85,19 +85,31 @@ jobs:
               --max-time 30 --output /dev/null "${url}"
           done
 
-          echo "Verifying fresh homepage script reference"
+          echo "Verifying fresh homepage and contextual-card assets"
           ok=0
           for attempt in $(seq 1 18); do
-            if curl --fail --silent --show-error --location \
-              --max-time 30 "https://bluepeakverity.com/?verify=${GITHUB_SHA}-${attempt}" \
-              | grep -Fq 'assets/script.js?v=20260915-contextual-r4'; then
+            HOME_TMP=$(mktemp)
+            SCRIPT_TMP=$(mktemp)
+            CARDS_TMP=$(mktemp)
+            if curl --fail --silent --show-error --location --max-time 30 \
+                 --output "$HOME_TMP" "https://bluepeakverity.com/?verify=${GITHUB_SHA}-${attempt}" \
+              && grep -Fq 'assets/script.js?v=20260915-contextual-r4' "$HOME_TMP" \
+              && curl --fail --silent --show-error --location --max-time 30 \
+                 --output "$SCRIPT_TMP" "https://bluepeakverity.com/assets/script.js?v=20260915-contextual-r4-${attempt}" \
+              && grep -Fq 'assets/colorful-card-logos.js?v=20260915-r2' "$SCRIPT_TMP" \
+              && curl --fail --silent --show-error --location --max-time 30 \
+                 --output "$CARDS_TMP" "https://bluepeakverity.com/assets/colorful-card-logos.js?v=20260915-r2-${attempt}" \
+              && grep -Fq "card.querySelectorAll('.bp3-service-icon, .bpv-card-visual, .bpv-tool-row, .bpv-brand-chip').forEach(node => node.remove());" "$CARDS_TMP" \
+              && ! grep -Fq 'makeToolChip' "$CARDS_TMP"; then
               ok=1
+              rm -f "$HOME_TMP" "$SCRIPT_TMP" "$CARDS_TMP"
               break
             fi
-            echo "Homepage still propagating; retry ${attempt}/18"
+            rm -f "$HOME_TMP" "$SCRIPT_TMP" "$CARDS_TMP"
+            echo "Frontend still propagating; retry ${attempt}/18"
             sleep 5
           done
-          test "$ok" -eq 1 || { echo "Fresh homepage asset version not visible on custom domain"; exit 1; }
+          test "$ok" -eq 1 || { echo "Corrected contextual-card frontend is not visible on custom domain"; exit 1; }
 
       - name: Notify IndexNow of public URLs
         shell: bash

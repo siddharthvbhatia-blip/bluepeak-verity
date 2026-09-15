@@ -20,7 +20,7 @@
   const loadBrandCorrection = () => {
     if (document.querySelector('script[data-bpv-brand-correction]')) return;
     const correction = document.createElement('script');
-    correction.src = 'assets/brand-correction.js?v=20260915-r1';
+    correction.src = 'assets/brand-correction.js?v=20260915-r2';
     correction.async = false;
     correction.dataset.bpvBrandCorrection = 'true';
     document.head.appendChild(correction);

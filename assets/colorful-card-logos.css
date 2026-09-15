@@ -1,13 +1,194 @@
-/* BluePeak Verity — colourful card/logo enhancement layer */
-.bpv-color-card{position:relative;overflow:hidden;isolation:isolate;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}.bpv-color-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--bpv-a,#12a9cf),var(--bpv-b,#5f7cff));opacity:.95}.bpv-color-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(17,45,64,.10);border-color:rgba(36,155,185,.26)}
-.bpv-card-visual{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;position:absolute;right:18px;top:18px;background:linear-gradient(145deg,color-mix(in srgb,var(--bpv-a,#12a9cf) 15%,white),color-mix(in srgb,var(--bpv-b,#5f7cff) 9%,white));border:1px solid color-mix(in srgb,var(--bpv-a,#12a9cf) 28%,transparent);box-shadow:0 9px 24px rgba(14,71,96,.08);color:var(--bpv-a,#12a9cf)}
-.bpv-card-visual svg{width:23px;height:23px;display:block}.bpv-card-visual svg *{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.bpv-tool-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:16px}.delivery-card .bpv-tool-row{margin-top:auto;padding-top:17px}.deliverables-grid>article .bpv-tool-row{margin-top:auto;padding-top:14px}
-.bpv-brand-chip{height:30px;min-width:44px;padding:4px 8px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:999px;background:#fff;border:1px solid rgba(15,40,58,.09);box-shadow:0 5px 14px rgba(13,42,59,.06);line-height:0}.bpv-brand-chip img{display:block;object-fit:contain;max-width:none;filter:none!important;opacity:1!important}.bpv-brand-chip.qbo{width:74px;overflow:hidden;position:relative}.bpv-brand-chip.qbo img{position:absolute;width:74px;height:auto;left:0;top:50%;transform:translateY(-50%)}.bpv-brand-chip.xero{width:52px}.bpv-brand-chip.xero img{width:48px;height:auto}.bpv-brand-chip.excel{background:#eaf7f0;color:#217346;border-color:#cce9d9;font:800 10px/1.1 Arial,sans-serif}.bpv-brand-chip.powerbi{background:#fff7d8;color:#b78900;border-color:#f1dfa0;font:800 10px/1.1 Arial,sans-serif}.bpv-mini-mark{width:17px;height:17px;border-radius:4px;display:grid;place-items:center;background:currentColor;color:#fff;font:900 10px/1 Arial,sans-serif}.bpv-brand-chip.powerbi .bpv-mini-mark{background:transparent;color:#d5a500;display:flex;align-items:flex-end;gap:1px}.bpv-brand-chip.powerbi .bpv-mini-mark i{display:block;width:3px;border-radius:1px;background:currentColor}.bpv-brand-chip.powerbi .bpv-mini-mark i:nth-child(1){height:6px}.bpv-brand-chip.powerbi .bpv-mini-mark i:nth-child(2){height:10px}.bpv-brand-chip.powerbi .bpv-mini-mark i:nth-child(3){height:14px}.bpv-brand-chip.powerbi .bpv-mini-mark i:nth-child(4){height:17px}
-/* Colour families */
-.bpv-accent-1{--bpv-a:#10a8c6;--bpv-b:#2d73e8}.bpv-accent-2{--bpv-a:#27a56f;--bpv-b:#12a9cf}.bpv-accent-3{--bpv-a:#6f62d9;--bpv-b:#2d73e8}.bpv-accent-4{--bpv-a:#d39b00;--bpv-b:#f06c55}.bpv-accent-5{--bpv-a:#e46d5f;--bpv-b:#d79a00}.bpv-accent-6{--bpv-a:#2c8f76;--bpv-b:#56b66b}.bpv-accent-7{--bpv-a:#3478d4;--bpv-b:#7a63d6}.bpv-accent-8{--bpv-a:#b85c9c;--bpv-b:#6d62d8}
-.delivery-card.bpv-color-card,.deliverables-grid>article.bpv-color-card{display:flex;flex-direction:column}.delivery-card.bpv-color-card{padding-top:28px}.delivery-card.bpv-color-card h3{max-width:calc(100% - 48px)}.deliverables-grid>article.bpv-color-card{min-height:190px;padding-top:26px}.deliverables-grid>article.bpv-color-card>strong{padding-right:48px}.deliverables-grid>article.bpv-color-card .bpv-card-visual{top:16px;right:16px;width:38px;height:38px;border-radius:12px}.deliverables-grid>article.bpv-color-card .bpv-card-visual svg{width:21px;height:21px}
-/* Earlier dark capacity cards: richer colour without overpowering text */
-.capacity-grid>article.bpv-capacity-card .bpv-capacity-icon{background:linear-gradient(145deg,color-mix(in srgb,var(--bpv-capacity,#36c1d0) 24%,#071a27),color-mix(in srgb,var(--bpv-capacity2,#6680ff) 14%,#071a27));border-color:color-mix(in srgb,var(--bpv-capacity,#36c1d0) 46%,transparent);color:#fff;box-shadow:0 12px 28px color-mix(in srgb,var(--bpv-capacity,#36c1d0) 18%,transparent)}.capacity-grid>article.bpv-capacity-card:nth-child(1){--bpv-capacity:#25b9d1;--bpv-capacity2:#3c7ee8}.capacity-grid>article.bpv-capacity-card:nth-child(2){--bpv-capacity:#42b878;--bpv-capacity2:#1fb6c4}.capacity-grid>article.bpv-capacity-card:nth-child(3){--bpv-capacity:#7671e2;--bpv-capacity2:#3194d7}.capacity-grid>article.bpv-capacity-card:nth-child(4){--bpv-capacity:#d6a323;--bpv-capacity2:#ef735a}.capacity-grid>article.bpv-capacity-card:nth-child(5){--bpv-capacity:#ea765f;--bpv-capacity2:#d9a72a}.capacity-grid>article.bpv-capacity-card:nth-child(6){--bpv-capacity:#2aa47d;--bpv-capacity2:#62ba6e}.capacity-grid>article.bpv-capacity-card:nth-child(7){--bpv-capacity:#3e7ed6;--bpv-capacity2:#7768dd}.capacity-grid>article.bpv-capacity-card:nth-child(8){--bpv-capacity:#b663a5;--bpv-capacity2:#7768dd}
-@media(max-width:640px){.bpv-card-visual{right:15px;top:15px;width:38px;height:38px}.bpv-card-visual svg{width:21px;height:21px}.bpv-brand-chip{height:28px}.bpv-brand-chip.qbo,.bpv-brand-chip.qbo img{width:68px}.bpv-brand-chip.xero{width:48px}.bpv-brand-chip.xero img{width:44px}.deliverables-grid>article.bpv-color-card{min-height:170px}}
-@media(prefers-reduced-motion:reduce){.bpv-color-card:hover{transform:none}}
+/* BluePeak Verity — contextual colourful card illustrations.
+   Service/deliverable cards use meaningful accounting visuals, not repeated software logos. */
+
+.bpv-color-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.bpv-color-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bpv-a), var(--bpv-b));
+  opacity: .98;
+}
+
+.bpv-color-card::after {
+  content: "";
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  right: -52px;
+  bottom: -62px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, color-mix(in srgb, var(--bpv-a) 17%, white), color-mix(in srgb, var(--bpv-b) 5%, white) 58%, transparent 72%);
+  opacity: .72;
+}
+
+.bpv-color-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--bpv-a) 28%, #cbd7df);
+  box-shadow: 0 18px 42px rgba(15, 42, 60, .11);
+}
+
+.bpv-card-visual {
+  width: 54px;
+  height: 54px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--bpv-a) 17%, white),
+    color-mix(in srgb, var(--bpv-b) 10%, white));
+  border: 1px solid color-mix(in srgb, var(--bpv-a) 28%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--bpv-a) 10%, transparent), inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.bpv-card-visual::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  right: -2px;
+  top: -2px;
+  border-radius: 50%;
+  background: var(--bpv-b);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.92);
+}
+
+.bpv-card-visual svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  overflow: visible;
+}
+
+.bpv-card-visual .bpv-fill-a {
+  fill: color-mix(in srgb, var(--bpv-a) 22%, white);
+  stroke: color-mix(in srgb, var(--bpv-a) 66%, #18374a);
+  stroke-width: 1.25;
+}
+
+.bpv-card-visual .bpv-fill-b {
+  fill: color-mix(in srgb, var(--bpv-b) 18%, white);
+  stroke: color-mix(in srgb, var(--bpv-b) 58%, #18374a);
+  stroke-width: 1.15;
+}
+
+.bpv-card-visual .bpv-line {
+  fill: none;
+  stroke: color-mix(in srgb, var(--bpv-a) 72%, #18374a);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bpv-card-visual .bpv-dot {
+  fill: var(--bpv-b);
+  stroke: #fff;
+  stroke-width: 1.1;
+}
+
+/* Colour families: professional but visibly different card-to-card. */
+.bpv-accent-1 { --bpv-a:#0ba7c7; --bpv-b:#2f72e8; }
+.bpv-accent-2 { --bpv-a:#1b9f77; --bpv-b:#00a9c7; }
+.bpv-accent-3 { --bpv-a:#6c62d9; --bpv-b:#2d78ea; }
+.bpv-accent-4 { --bpv-a:#d79b00; --bpv-b:#ef6b53; }
+.bpv-accent-5 { --bpv-a:#ef715d; --bpv-b:#d89d00; }
+.bpv-accent-6 { --bpv-a:#239675; --bpv-b:#59b96d; }
+.bpv-accent-7 { --bpv-a:#3479d8; --bpv-b:#7864da; }
+.bpv-accent-8 { --bpv-a:#b65da0; --bpv-b:#7062d9; }
+
+.delivery-card.bpv-color-card,
+.deliverables-grid > article.bpv-color-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.delivery-card.bpv-color-card {
+  padding-top: 28px;
+}
+
+.delivery-card.bpv-color-card h3 {
+  max-width: calc(100% - 62px);
+}
+
+.deliverables-grid > article.bpv-color-card {
+  min-height: 190px;
+  padding-top: 27px;
+}
+
+.deliverables-grid > article.bpv-color-card > strong {
+  padding-right: 60px;
+}
+
+.deliverables-grid > article.bpv-color-card .bpv-card-visual {
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+}
+
+.deliverables-grid > article.bpv-color-card .bpv-card-visual svg {
+  width: 31px;
+  height: 31px;
+}
+
+/* Remove any legacy platform-chip residue in these contextual service cards. */
+.delivery-grid .bpv-tool-row,
+.deliverables-grid .bpv-tool-row,
+.delivery-grid .bpv-brand-chip,
+.deliverables-grid .bpv-brand-chip {
+  display: none !important;
+}
+
+/* Earlier dark capacity cards: richer individual colour, without vendor-logo clutter. */
+.capacity-grid > article.bpv-capacity-card .bpv-capacity-brands {
+  display: none !important;
+}
+
+.capacity-grid > article.bpv-capacity-card .bpv-capacity-icon {
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,.18), transparent 32%),
+    linear-gradient(145deg, var(--bpv-capacity), var(--bpv-capacity2));
+  border-color: rgba(255,255,255,.20);
+  color: #fff;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--bpv-capacity) 24%, transparent), inset 0 1px 0 rgba(255,255,255,.22);
+}
+
+.capacity-grid > article.bpv-capacity-card:nth-child(1) { --bpv-capacity:#12a9c9; --bpv-capacity2:#3477e3; }
+.capacity-grid > article.bpv-capacity-card:nth-child(2) { --bpv-capacity:#25aa77; --bpv-capacity2:#13a8bd; }
+.capacity-grid > article.bpv-capacity-card:nth-child(3) { --bpv-capacity:#6f69dc; --bpv-capacity2:#3c84db; }
+.capacity-grid > article.bpv-capacity-card:nth-child(4) { --bpv-capacity:#d5a123; --bpv-capacity2:#eb7357; }
+.capacity-grid > article.bpv-capacity-card:nth-child(5) { --bpv-capacity:#ed725e; --bpv-capacity2:#d8a324; }
+.capacity-grid > article.bpv-capacity-card:nth-child(6) { --bpv-capacity:#2a9f7b; --bpv-capacity2:#63b96e; }
+.capacity-grid > article.bpv-capacity-card:nth-child(7) { --bpv-capacity:#3c7fd7; --bpv-capacity2:#7667dc; }
+.capacity-grid > article.bpv-capacity-card:nth-child(8) { --bpv-capacity:#b55fa0; --bpv-capacity2:#7564dc; }
+
+@media (max-width: 640px) {
+  .bpv-card-visual {
+    right: 15px;
+    top: 15px;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .bpv-card-visual svg { width: 30px; height: 30px; }
+  .delivery-card.bpv-color-card h3 { max-width: calc(100% - 52px); }
+  .deliverables-grid > article.bpv-color-card { min-height: 168px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bpv-color-card:hover { transform: none; }
+}

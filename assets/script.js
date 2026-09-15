@@ -17,12 +17,34 @@
     document.head.appendChild(platformStyle);
   }
 
+  if (!document.querySelector('link[data-bpv-colorful-cards]')) {
+    const colorfulStyle = document.createElement('link');
+    colorfulStyle.rel = 'stylesheet';
+    colorfulStyle.href = 'assets/colorful-card-logos.css?v=20260915-r1';
+    colorfulStyle.dataset.bpvColorfulCards = 'true';
+    document.head.appendChild(colorfulStyle);
+  }
+
+  const loadColorfulCards = () => {
+    if (document.querySelector('script[data-bpv-colorful-cards]')) return;
+    const colorful = document.createElement('script');
+    colorful.src = 'assets/colorful-card-logos.js?v=20260915-r1';
+    colorful.async = false;
+    colorful.dataset.bpvColorfulCards = 'true';
+    document.head.appendChild(colorful);
+  };
+
   const loadBrandCorrection = () => {
-    if (document.querySelector('script[data-bpv-brand-correction]')) return;
+    if (document.querySelector('script[data-bpv-brand-correction]')) {
+      loadColorfulCards();
+      return;
+    }
     const correction = document.createElement('script');
     correction.src = 'assets/brand-correction.js?v=20260915-r2';
     correction.async = false;
     correction.dataset.bpvBrandCorrection = 'true';
+    correction.addEventListener('load', loadColorfulCards, { once: true });
+    correction.addEventListener('error', loadColorfulCards, { once: true });
     document.head.appendChild(correction);
   };
 

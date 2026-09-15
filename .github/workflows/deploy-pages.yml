@@ -25,11 +25,13 @@ jobs:
         run: |
           node --check assets/script.js
           node --check assets/platform-branding.js
+          node --check assets/brand-correction.js
+          node --check assets/colorful-card-logos.js
 
       - name: Validate required site files
         run: |
           set -euo pipefail
-          for file in index.html about.html xero-certified.html privacy.html terms.html 404.html robots.txt sitemap.xml assets/styles.css assets/script.js assets/logo.svg assets/favicon.svg assets/og-card.svg assets/founder-original-attached.jpg 1bccfdc0f1b230fd5f58cedc65708b5b.txt; do
+          for file in index.html about.html xero-certified.html privacy.html terms.html 404.html robots.txt sitemap.xml assets/styles.css assets/script.js assets/logo.svg assets/favicon.svg assets/og-card.svg assets/founder-original-attached.jpg assets/brand-correction.js assets/brand-correction.css assets/colorful-card-logos.js assets/colorful-card-logos.css 1bccfdc0f1b230fd5f58cedc65708b5b.txt; do
             test -s "$file" || { echo "Missing required file: $file"; exit 1; }
           done
           ! grep -R "github.io/itrdesk/bluepeak-verity" --include='*.html' --include='*.xml' --include='*.txt' .
@@ -44,6 +46,16 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Force fresh frontend asset versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="20260915-contextual-r4"
+          while IFS= read -r -d '' file; do
+            sed -i -E "s#assets/script\\.js\\?v=[^\"]+#assets/script.js?v=${VERSION}#g" "$file"
+          done < <(find . -maxdepth 1 -name '*.html' -print0)
+          grep -F "assets/script.js?v=${VERSION}" index.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -72,6 +84,20 @@ jobs:
               --retry 12 --retry-delay 5 --retry-all-errors \
               --max-time 30 --output /dev/null "${url}"
           done
+
+          echo "Verifying fresh homepage script reference"
+          ok=0
+          for attempt in $(seq 1 18); do
+            if curl --fail --silent --show-error --location \
+              --max-time 30 "https://bluepeakverity.com/?verify=${GITHUB_SHA}-${attempt}" \
+              | grep -Fq 'assets/script.js?v=20260915-contextual-r4'; then
+              ok=1
+              break
+            fi
+            echo "Homepage still propagating; retry ${attempt}/18"
+            sleep 5
+          done
+          test "$ok" -eq 1 || { echo "Fresh homepage asset version not visible on custom domain"; exit 1; }
 
       - name: Notify IndexNow of public URLs
         shell: bash

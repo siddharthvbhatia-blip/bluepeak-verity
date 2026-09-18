@@ -39,7 +39,25 @@
   const serviceIcons = ['ledger','reconcile','calendar','arap','cleanup','tax','workpapers','query'];
   const deliverableIcons = ['ledger','bank','creditcard','ageing','ageing','balance','asset','tax','tracker','evidence','review','status'];
 
+  const applyPricing = () => {
+    const cards = [...document.querySelectorAll('.pricing-grid .price-card')];
+    cards.forEach(card => {
+      const title = card.querySelector('h3')?.textContent.trim();
+      const price = card.querySelector('.price');
+      if (!price) return;
+      if (title === 'Defined Pilot Assignment') {
+        price.innerHTML = '<strong>US$300</strong><small>/ £250</small>';
+        price.classList.add('bpv-pricing-correction');
+      }
+      if (title === 'Recurring Accounting Delivery') {
+        price.innerHTML = '<strong>US$500</strong><small>/ £400</small>';
+        price.classList.add('bpv-pricing-correction');
+      }
+    });
+  };
+
   const apply = () => {
+    applyPricing();
     document.querySelectorAll('.bpv-tool-row, .bpv-capacity-brands').forEach(node => node.remove());
 
     [...document.querySelectorAll('.delivery-grid > article')].forEach((card, i) => {
@@ -59,4 +77,5 @@
   requestAnimationFrame(apply);
   window.setTimeout(apply, 180);
   window.setTimeout(apply, 700);
+  window.setTimeout(applyPricing, 1400);
 })();

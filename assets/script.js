@@ -82,7 +82,7 @@
       return;
     }
     const eliteScript = document.createElement('script');
-    eliteScript.src = 'assets/elite-polish-v2.js?v=20260914-r1';
+    eliteScript.src = 'assets/elite-polish-v2.js?v=20260918-r2';
     eliteScript.async = false;
     eliteScript.dataset.bpElitePolish = 'true';
     eliteScript.addEventListener('load', loadEliteV3, { once: true });

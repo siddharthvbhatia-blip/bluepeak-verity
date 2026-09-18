@@ -135,29 +135,6 @@
     anchor.insertAdjacentElement('afterend', section);
   };
 
-  const makeFitFilter = () => {
-    if (q('#engagement-fit')) return;
-    const pilot = q('#pilot');
-    if (!pilot) return;
-    const section = document.createElement('section');
-    section.className = 'section bp2-fit-section';
-    section.id = 'engagement-fit';
-    section.innerHTML = `
-      <div class="container bp2-fit-layout">
-        <div class="bp2-fit-copy bp-reveal">
-          <p class="eyebrow">Fit before scale</p>
-          <h2>The best outsourcing relationship starts by being clear about what belongs in scope.</h2>
-          <p>BluePeak is strongest where repeatable accounting execution, reconciliation discipline and structured review handoff matter. Work requiring regulated authority or specialist judgement is scoped separately.</p>
-          <a class="text-link" href="#contact">Check a workflow with us <span>↗</span></a>
-        </div>
-        <div class="bp2-fit-grid">
-          <article class="bp2-fit-card strong bp-reveal"><span>Strong fit</span><h3>Preparation-heavy accounting work</h3><ul><li>Recurring bookkeeping and month-end preparation</li><li>Bank, card and balance-sheet reconciliations</li><li>Cleanup, catch-up and backlog assignments</li><li>White-label workpapers, schedules and query management</li></ul></article>
-          <article class="bp2-fit-card scope bp-reveal"><span>Separate scoping</span><h3>Authority or specialist-judgement work</h3><ul><li>Regulated sign-off, audit opinions or statutory authority</li><li>Direct client advisory requiring jurisdiction-specific licensure</li><li>Complex tax return filing or regulated tax representation</li><li>Payment approval, collection authority or treasury control</li></ul></article>
-        </div>
-      </div>`;
-    pilot.insertAdjacentElement('beforebegin', section);
-  };
-
   const addMarketMicroProof = () => {
     if (q('.bp2-market-proof')) return;
     const shell = q('.audience-shell');
@@ -234,7 +211,6 @@
     addFounderToolMarks();
     addFormToolCue();
     makeReviewerShift();
-    makeFitFilter();
     addMarketMicroProof();
     enhanceTabKeyboard('.bp-preview-menu,.bp-bottleneck-menu,.audience-tabs');
     revealAdded();

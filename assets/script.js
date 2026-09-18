@@ -28,7 +28,7 @@
   const loadColorfulCards = () => {
     if (document.querySelector('script[data-bpv-colorful-cards]')) return;
     const colorful = document.createElement('script');
-    colorful.src = 'assets/colorful-card-logos.js?v=20260915-r2';
+    colorful.src = 'assets/colorful-card-logos.js?v=20260918-pricing-r1';
     colorful.async = false;
     colorful.dataset.bpvColorfulCards = 'true';
     document.head.appendChild(colorful);

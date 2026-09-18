@@ -96,7 +96,7 @@
       return;
     }
     const benchmarkScript = document.createElement('script');
-    benchmarkScript.src = 'assets/benchmark-polish.js?v=20260914-r1';
+    benchmarkScript.src = 'assets/benchmark-polish.js?v=20260918-r2';
     benchmarkScript.async = false;
     benchmarkScript.dataset.bpBenchmarkPolish = 'true';
     benchmarkScript.addEventListener('load', loadElitePolish, { once: true });

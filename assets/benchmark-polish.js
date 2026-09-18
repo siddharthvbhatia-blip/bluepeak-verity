@@ -171,46 +171,6 @@
     qa('.bp-bottleneck-button').forEach(button => button.setAttribute('aria-selected', String(button.dataset.bottleneck === key)));
   };
 
-  const makeResponsibilitySection = () => {
-    if (q('#responsibility-split')) return;
-    const security = q('#security');
-    if (!security) return;
-
-    const section = document.createElement('section');
-    section.className = 'section bp-responsibility-section';
-    section.id = 'responsibility-split';
-    section.innerHTML = `
-      <div class="container section-intro centered bp-reveal">
-        <p class="eyebrow">Clear responsibility split</p>
-        <h2>Outsourcing works when ownership remains visible.</h2>
-        <p>BluePeak is designed as a preparation and execution layer. Your firm or appropriately responsible professional retains the decisions that require professional judgement or statutory authority.</p>
-      </div>
-      <div class="container bp-responsibility-shell">
-        <article class="bp-responsibility-lane bluepeak bp-reveal">
-          <div class="bp-lane-heading"><span>BluePeak Verity</span><strong>Execution & preparation</strong></div>
-          <div class="bp-lane-list">
-            <div class="bp-lane-item"><i>✓</i><span>Process agreed accounting records and recurring bookkeeping.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Reconcile accounts and prepare supporting schedules.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Organise workpapers and evidence references.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Isolate exceptions and consolidate open queries.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Hand off work in the agreed review format.</span></div>
-          </div>
-        </article>
-        <div class="bp-responsibility-bridge bp-reveal" aria-hidden="true"><span>CONTROLLED<br>HANDOFF</span></div>
-        <article class="bp-responsibility-lane bp-reveal">
-          <div class="bp-lane-heading"><span>Your firm / responsible professional</span><strong>Judgement & authority</strong></div>
-          <div class="bp-lane-list">
-            <div class="bp-lane-item"><i>✓</i><span>Own the client relationship and approve engagement scope.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Apply material professional judgement and accounting-policy decisions.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Approve material adjustments and unresolved exceptions.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Retain filing, payment and statutory authority where applicable.</span></div>
-            <div class="bp-lane-item"><i>✓</i><span>Perform final professional review and regulated sign-off.</span></div>
-          </div>
-        </article>
-      </div>`;
-    security.insertAdjacentElement('beforebegin', section);
-  };
-
   const addPractitionerCue = () => {
     if (q('.bp-practitioner-card')) return;
     const contactCopy = q('.contact-copy');
@@ -255,7 +215,6 @@
   const init = () => {
     upgradeSoftwareTiles();
     makeBottleneckSection();
-    makeResponsibilitySection();
     addPractitionerCue();
     renderBottleneck('close');
     qa('.bp-bottleneck-button').forEach(button => button.addEventListener('click', () => renderBottleneck(button.dataset.bottleneck)));
